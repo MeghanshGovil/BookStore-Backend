@@ -184,17 +184,17 @@ The API implements robust error handling with appropriate HTTP status codes and 
 - Dockerization for easier deployment
 
 ## Assumptions & Enhancements
-✅ User authentication is handled via JWT with separate user registration and login routes.
-✅ Role-based authorization implemented (Admin vs User roles with different permissions).
-✅ Book operations (CRUD) are fully implemented with proper validation.
-✅ MongoDB is used as the database with Mongoose ODM for schema validation.
-✅ Error handling is implemented with appropriate HTTP status codes.
-⚠️ Environment variables are used but some configuration could be moved to .env files.
-⚠️ Password hashing is implemented but could benefit from salt rounds configuration.
-🚫 No frontend UI – this is a backend-only API (can be tested via Postman/Thunder Client).
-🧪 Input validation is handled via middleware but could be enhanced with a validation library.
-📝 Pagination is implemented for book listing but sorting options could be expanded.
-🔄 The project follows MVC architecture with clear separation of concerns.
+1. User authentication is handled via JWT with separate user registration and login routes.
+2. Role-based authorization implemented (Admin vs User roles with different permissions).
+3. Book operations (CRUD) are fully implemented with proper validation.
+4. MongoDB is used as the database with Mongoose ODM for schema validation.
+5. Error handling is implemented with appropriate HTTP status codes.
+6. Environment variables are used but some configuration could be moved to .env files.
+7. Password hashing is implemented but could benefit from salt rounds configuration.
+8. No frontend UI – this is a backend-only API (can be tested via Postman/Thunder Client).
+9. Input validation is handled via middleware but could be enhanced with a validation library.
+10. Pagination is implemented for book listing but sorting options could be expanded.
+11. The project follows MVC architecture with clear separation of concerns.
 
 ## Contributing
 
