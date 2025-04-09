@@ -2,8 +2,6 @@
 
 A robust RESTful API for managing a bookstore application, built with Node.js, Express, and MongoDB.
 
-![BookStore](https://raw.githubusercontent.com/MeghanshGovil/BookStore-Backend/main/assets/bookstore-banner.jpg)
-
 ## Overview
 
 The BookStore Backend is a comprehensive API that provides all necessary functionality for managing a bookstore inventory system. It includes user authentication, book management, and order processing capabilities.
@@ -148,10 +146,6 @@ The API implements robust error handling with appropriate HTTP status codes and 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Author
-
-**Meghansh Govil** - [GitHub Profile](https://github.com/MeghanshGovil)
 
 ---
 
