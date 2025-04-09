@@ -36,62 +36,112 @@ The BookStore Backend is a comprehensive API that provides all necessary functio
 - **JWT** - JSON Web Token for authentication
 - **Bcrypt** - Password hashing
 
-## API Endpoints
+## 🚀 Setup Instructions
 
-### Authentication
-- `POST /api/users/register` - Register a new user
-- `POST /api/users/login` - Login a user
-- `GET /api/users/profile` - Get user profile
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/harshpdsingh/bookstore-api.git
+   cd bookstore-api
+   ```
 
-### Books
-- `GET /api/books` - Get all books
-- `GET /api/books/:id` - Get specific book
-- `POST /api/books` - Add new book (Admin only)
-- `PUT /api/books/:id` - Update book (Admin only)
-- `DELETE /api/books/:id` - Delete book (Admin only)
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### Orders
-- `POST /api/orders` - Create a new order
-- `GET /api/orders` - Get all orders (Admin only)
-- `GET /api/orders/myorders` - Get user's orders
-- `GET /api/orders/:id` - Get specific order
-- `PUT /api/orders/:id` - Update order status (Admin only)
+3. **Configure environment variables:**
 
-## Installation
+   Create a `.env` file in the root directory and add the following:
+   ```env
+   DATABASE_URL="your_postgresql_connection_string"
+   JWT_SECRET="your_jwt_secret"
+   ```
 
-```bash
-# Clone the repository
-git clone https://github.com/MeghanshGovil/BookStore-Backend.git
+   Example (for local PostgreSQL):
+   ```env
+   DATABASE_URL="postgresql://postgres:password@localhost:5432/bookstore"
+   ```
 
-# Navigate to project directory
-cd BookStore-Backend
+4. **Generate Prisma client and run migrations:**
+   ```bash
+   npx prisma generate
+   npx prisma migrate dev --name init
+   ```
 
-# Install dependencies
-npm install
+5. **Start the development server:**
+   ```bash
+   npm run start:dev
+   ```
 
-# Create .env file with the following variables
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-PORT=5000
+---
 
-# Run the server
-npm start
+## 📬 API Endpoints & Sample Requests
+
+### 🔐 Auth
+
+#### Signup
+`POST /auth/signup`
+```json
+{
+  "email": "user@example.com",
+  "password": "securepassword"
+}
 ```
 
-## Project Structure
+#### Login
+`POST /auth/login`
+```json
+{
+  "email": "user@example.com",
+  "password": "securepassword"
+}
+```
 
+✅ Returns JWT token:
+```json
+{
+  "access_token": "your.jwt.token"
+}
 ```
-BookStore-Backend/
-├── config/             # Configuration files
-├── controllers/        # Request handlers
-├── middleware/         # Custom middleware functions
-├── models/             # Mongoose models
-├── routes/             # API routes
-├── utils/              # Utility functions
-├── app.js              # Express app configuration
-├── server.js           # Server entry point
-└── package.json        # Project dependencies
+
+---
+
+### 📘 Books (Protected by JWT)
+> Add `Authorization: Bearer <access_token>` header to all book routes.
+
+#### Create Book
+`POST /books`
+```json
+{
+  "title": "Atomic Habits",
+  "author": "James Clear",
+  "category": "Self-help",
+  "price": 499,
+  "rating": 5,
+  "publishedDate": "2021-01-01T00:00:00.000Z"
+}
 ```
+
+#### Get All Books
+`GET /books`
+
+Optional filters:
+`/books?author=James&category=Self-help&rating=5`
+
+#### Get Single Book
+`GET /books/:id`
+
+#### Update Book
+`PATCH /books/:id`
+```json
+{
+  "title": "Updated Book Title",
+  "price": 599
+}
+```
+
+#### Delete Book
+`DELETE /books/:id`
 
 ## Development
 
@@ -132,7 +182,6 @@ The API implements robust error handling with appropriate HTTP status codes and 
 - Payment gateway integration
 - Book ratings and reviews
 - Advanced search functionality
-- Performance optimization
 - Dockerization for easier deployment
 
 ## Contributing
