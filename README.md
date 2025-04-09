@@ -154,8 +154,7 @@ npm run dev
 ## Testing
 
 ```bash
-# Run tests
-npm test
+Run tests using PostMan
 ```
 
 ## Error Handling
